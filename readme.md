@@ -1,7 +1,7 @@
 # PoC for showing error with Unsafe::getLongVolatile() on Apple Silicon
 
 ## Introduction
-We are using Agrona and using `UnsafeBuffer::getLongVolatile()` caused an internal error Apple M1 & Apple M2  
+We are using Agrona and using `UnsafeBuffer::getLongVolatile()` caused an internal error (SIGBUS) on Apple M1 & Apple M2  
 using Apple Silicon M1 and Apple Silicon M2 cpu:s.
 Further investigation showed that the problem really is with `Unsafe::getLongVolatile()`  
 and more specifically, with the `Volatile` semantics. `Unsafe::getLong()` works as expected.  
